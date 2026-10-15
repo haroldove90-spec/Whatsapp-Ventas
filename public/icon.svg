@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="waGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#25D366" />
+      <stop offset="100%" stop-color="#128C7E" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#075E54" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  <!-- Background Circle / Squircle -->
+  <rect width="512" height="512" rx="128" fill="url(#waGrad)" />
+  
+  <!-- Chat Bubble Background -->
+  <g filter="url(#shadow)">
+    <path d="M256 96 C167.6 96 96 167.6 96 256 C96 288.5 105.7 318.8 122.4 344.2 L104 416 L178.6 396.6 C202.4 410.2 228.4 416 256 416 C344.4 416 416 344.4 416 256 C416 167.6 344.4 96 256 96 Z" fill="#FFFFFF" />
+  </g>
+  
+  <!-- Central Bottle & Shopping / Ventas Icon -->
+  <!-- Bottle shape -->
+  <path d="M242 168 L270 168 C273 168 275 170 275 173 L275 190 C285 200 292 214 292 232 L292 328 C292 336 286 342 278 342 L234 342 C226 342 220 336 220 328 L220 232 C220 214 227 200 237 190 L237 173 C237 170 239 168 242 168 Z" fill="#128C7E" />
+  <!-- Bottle cap -->
+  <rect x="246" y="152" width="20" height="14" rx="3" fill="#075E54" />
+  <!-- Bottle liquid/label wave -->
+  <rect x="226" y="244" width="60" height="42" rx="4" fill="#25D366" />
+  <!-- Dollar / checkmark mark on label -->
+  <path d="M250 254 L258 262 L268 250" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <!-- Small beverage splash/sparkles -->
+  <circle cx="316" cy="200" r="10" fill="#25D366" />
+  <circle cx="332" cy="230" r="6" fill="#128C7E" />
+  <circle cx="186" cy="220" r="8" fill="#25D366" />
+  <!-- Speed lines for delivery (reparto) -->
+  <path d="M172 260 L196 260" stroke="#128C7E" stroke-width="5" stroke-linecap="round" />
+  <path d="M164 280 L200 280" stroke="#128C7E" stroke-width="5" stroke-linecap="round" />
+  <path d="M176 300 L198 300" stroke="#128C7E" stroke-width="5" stroke-linecap="round" />
+</svg>

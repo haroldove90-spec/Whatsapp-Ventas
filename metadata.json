@@ -1,0 +1,6 @@
+{
+  "name": "Whatsapp Ventas",
+  "description": "Sistema ágil de control de pedidos, barra de producción, ruta de repartidores y corte de caja estilo WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
