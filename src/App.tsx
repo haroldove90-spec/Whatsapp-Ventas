@@ -31,7 +31,17 @@ import { ClearDataModal } from './components/modals/ClearDataModal';
 import { CorteCajaModal } from './components/modals/CorteCajaModal';
 import { PWAInstallGuideModal } from './components/modals/PWAInstallGuideModal';
 
+import { DeactivatedScreen } from './components/DeactivatedScreen';
+
 export default function App() {
+  const [isDeactivated, setIsDeactivated] = useState<boolean>(() => {
+    const stored = localStorage.getItem('whatsapp_ventas_deactivated');
+    if (stored !== null) {
+      return stored === 'true';
+    }
+    return true; // Desactivado por defecto según solicitud
+  });
+
   const [currentRole, setCurrentRole] = useState<UserRole | null>(() => {
     const stored = getStoredRole();
     if (stored && ['ventas', 'produccion', 'repartidores', 'admin'].includes(stored)) {
@@ -95,6 +105,21 @@ export default function App() {
 
   const dailyReport: DailyCashReport = calculateDailyCashReport(orders);
 
+  const handleReactivate = () => {
+    setIsDeactivated(false);
+    localStorage.setItem('whatsapp_ventas_deactivated', 'false');
+  };
+
+  const handleDeactivate = () => {
+    setIsDeactivated(true);
+    localStorage.setItem('whatsapp_ventas_deactivated', 'true');
+  };
+
+  // 0. Programa Desactivado (Leyenda en el Home solicitada)
+  if (isDeactivated) {
+    return <DeactivatedScreen onReactivate={handleReactivate} />;
+  }
+
   // 1. Initial State: Role Picker (Clean 2 Col Mobile / 4 Col Desktop Grid without Header)
   if (!currentRole) {
     return (
@@ -125,6 +150,7 @@ export default function App() {
         onOpenNewOrderModal={() => setIsOrderModalOpen(true)}
         onOpenClearDataModal={() => setIsClearDataModalOpen(true)}
         onOpenInstallGuide={() => setIsInstallGuideModalOpen(true)}
+        onDeactivateProgram={handleDeactivate}
         ordersCount={totalOrdersToday}
       />
 

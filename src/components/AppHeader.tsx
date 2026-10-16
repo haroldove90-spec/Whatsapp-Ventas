@@ -13,7 +13,8 @@ import {
   ShieldCheck, 
   Trash2,
   RefreshCw,
-  PlusCircle
+  PlusCircle,
+  Lock
 } from 'lucide-react';
 import { usePWAInstall } from '../hooks/usePWAInstall';
 
@@ -26,6 +27,7 @@ interface AppHeaderProps {
   onOpenNewOrderModal: () => void;
   onOpenClearDataModal: () => void;
   onOpenInstallGuide: () => void;
+  onDeactivateProgram?: () => void;
   ordersCount: number;
 }
 
@@ -38,6 +40,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   onOpenNewOrderModal,
   onOpenClearDataModal,
   onOpenInstallGuide,
+  onDeactivateProgram,
   ordersCount
 }) => {
   const { isInstallable, isInstalled, isIOS, install } = usePWAInstall();
@@ -176,7 +179,18 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                   <span>Administrador / Dueño (Caja)</span>
                 </button>
 
-                <div className="border-t border-slate-100 mt-1 pt-1">
+                <div className="border-t border-slate-100 mt-1 pt-1 space-y-0.5">
+                  <button
+                    onClick={() => {
+                      setRoleDropdownOpen(false);
+                      if (onDeactivateProgram) onDeactivateProgram();
+                    }}
+                    className="w-full flex items-center gap-3 px-3.5 py-2 text-xs text-amber-700 hover:bg-amber-50 text-left transition"
+                  >
+                    <Lock className="w-3.5 h-3.5 text-amber-600" />
+                    <span>Desactivar programa</span>
+                  </button>
+
                   <button
                     onClick={() => {
                       setRoleDropdownOpen(false);
